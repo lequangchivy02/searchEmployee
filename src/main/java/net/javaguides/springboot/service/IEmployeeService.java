@@ -13,7 +13,4 @@ public interface IEmployeeService {
 
     EmployeeDTO save(EmployeeDTO employeeDTO);
 
-    List<EmployeeDTO> listAll();
-
-    EmployeeDTO get(long id);
 }

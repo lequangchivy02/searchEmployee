@@ -35,54 +35,18 @@ public class EmployeeController {
 		return employeeService.save(employee);
 	}
 
-	@GetMapping("/")
-	public String add(Model model) {
-		List<EmployeeDTO> listemployee = employeeService.listAll();
-		model.addAttribute("employee", new EmployeeDTO());
-		return "index";
-	}
-
-
-	@PostMapping("/search")
-	public String doSearchEmployee(@ModelAttribute("employeeSearchFormData") EmployeeDTO formData, Model model) {
-		EmployeeDTO emp = employeeService.get(formData.getId());
-		model.addAttribute("employee", emp);
-		return "index";
-	}
-	// get employee by id rest api
-//	@GetMapping("/employees/{id}")
-//	public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable Long id) {
-//		EmployeeDTO employeeDTO = (EmployeeDTO) employeeService.findById(id)
-//				.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
-//		return ResponseEntity.ok(employeeDTO);
+//	@GetMapping("/")
+//	public String add(Model model) {
+//		List<EmployeeDTO> listemployee = employeeService.listAll();
+//		model.addAttribute("employee", new EmployeeDTO());
+//		return "index";
 //	}
 //
-//	// update employee rest api
 //
-//	@PutMapping("/employees/{id}")
-//	public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employeeDetails){
-//		Employee employee = employeeService.findById(id)
-//				.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
-//
-//		employee.setFirstName(employeeDetails.getFirstName());
-//		employee.setLastName(employeeDetails.getLastName());
-//		employee.setEmailId(employeeDetails.getEmailId());
-//
-//		Employee updatedEmployee = employeeService.save(employee);
-//		return ResponseEntity.ok(updatedEmployee);
+//	@PostMapping("/search")
+//	public String doSearchEmployee(@ModelAttribute("employeeSearchFormData") EmployeeDTO formData, Model model) {
+//		EmployeeDTO emp = employeeService.get(formData.getId());
+//		model.addAttribute("employee", emp);
+//		return "index";
 //	}
-//
-//	// delete employee rest api
-//	@DeleteMapping("/employees/{id}")
-//	public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id){
-//		Employee employee = employeeService.findById(id)
-//				.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
-//
-//		employeeService.delete(employee);
-//		Map<String, Boolean> response = new HashMap<>();
-//		response.put("deleted", Boolean.TRUE);
-//		return ResponseEntity.ok(response);
-//	}
-//
-	
 }

@@ -29,7 +29,13 @@ public class EmployService implements IEmployeeService {
 
     @Override
     public List<EmployeeDTO> findAll() {
-       return null;
+        List<EmployeeDTO> employeeDTOs = new ArrayList<>();
+        for (EmployeeDTO item: employeeDTOs){
+            Employee employeeEntity = employeeConverter.toEntity(item);
+        }
+        employeeEntity = employeeRepository.findAll();
+        return employeeConverter.toDTO(employeeEntity);
+
     }
 
     @Override
@@ -37,20 +43,5 @@ public class EmployService implements IEmployeeService {
         Employee employeeEntity = employeeConverter.toEntity(employeeDTO);
         employeeEntity = employeeRepository.save(employeeEntity);
         return employeeConverter.toDTO(employeeEntity);
-    }
-    //
-    @Override
-    public List<EmployeeDTO> listAll() {
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        Employee employeeEntity = employeeConverter.toEntity(employeeDTO);
-       // employeeEntity = employeeRepository.findAll();
-        //return employeeConverter.toDTO(employeeEntity) ;
-        return null;
-    }
-
-    @Override
-    public EmployeeDTO get(long id) {
-        //return employeeRepository.findById(id).get();
-        return null;
     }
 }
